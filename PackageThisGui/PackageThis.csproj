@@ -1,0 +1,169 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C028259C-305D-4D75-99B7-6E727261D0E6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PackageThis</RootNamespace>
+    <AssemblyName>PackageThis</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppController.cs" />
+    <Compile Include="Chm.cs" />
+    <Compile Include="CompMsg.cs" />
+    <Compile Include="Content.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Content.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExportChmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportChmForm.Designer.cs">
+      <DependentUpon>ExportChmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateHxsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateHxsForm.Designer.cs">
+      <DependentUpon>GenerateHxsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpInterop.cs" />
+    <Compile Include="Hhc.cs" />
+    <Compile Include="Hhk.cs" />
+    <Compile Include="Hxc.cs" />
+    <Compile Include="Hxf.cs" />
+    <Compile Include="Hxk.cs" />
+    <Compile Include="Hxs.cs" />
+    <Compile Include="ExportProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportProgressForm.Designer.cs">
+      <DependentUpon>ExportProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hxt.cs" />
+    <Compile Include="ICompilable.cs" />
+    <Compile Include="IProgressReporter.cs" />
+    <Compile Include="Link.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GenerateHxsForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GenerateHxsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Content.xsc">
+      <DependentUpon>Content.xsd</DependentUpon>
+    </None>
+    <None Include="Content.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Content.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Content.xss">
+      <DependentUpon>Content.xsd</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Extra\msdnFTSstop_Unicode.stp" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="DownloadProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DownloadProgressForm.Designer.cs">
+      <DependentUpon>DownloadProgressForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Extra\html.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DownloadProgressForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DownloadProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Extra\Classic.css" />
+    <EmbeddedResource Include="ExportProgressForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExportProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExportChmForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExportChmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Extra\chm.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContentService\ContentServiceLibrary.csproj">
+      <Project>{98E0A275-CE44-47BB-8C8D-A654D6F3DF59}</Project>
+      <Name>ContentServiceLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
