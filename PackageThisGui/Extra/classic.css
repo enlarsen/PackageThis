@@ -1,0 +1,765 @@
+/* Copyright (c) Microsoft Corporation.  All rights reserved. */
+
+.majorTitle
+{
+	background-color: #D4DFFF;
+	padding:4px; 
+	margin: 0px -4px 0px -4px;
+	color: #003399;
+	font-size: 100%;
+}
+
+.title
+{
+	background-color: #D4DFFF;
+	padding: 4px 4px 20px 4px; 
+	margin: 0px -4px 10px -4px;
+
+	color: #003399;
+	font-size: 140%;
+	font-weight: 600;
+}
+
+
+/* Formats the expand/collapse images for all collapsible regions. */
+img.toggle
+{
+	border: 0px;
+	margin-right: 5px;
+}
+
+/* Formats the Language filter drop-down image. */
+img#languageFilterImage
+{
+	border: 0px;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+/* Formats the Members Options filter drop-down image. */
+img#membersOptionsFilterImage
+{
+	border: 0px;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+/* Formats the Collapse All/Expand All images. */
+img#toggleAllImage
+{
+	margin-left: 4px;
+	vertical-align: middle;
+}
+
+/* Supports XLinks */
+MSHelp\:link
+{
+ 	text-decoration: underline;
+	color: #0000ff; 
+	hoverColor: #3366ff;
+	filterString: ;
+}
+
+
+/***********************************************************
+ *             CONTENT PRESENTATION STYLES
+ ***********************************************************/
+
+body
+{
+	background:	#FFFFFF;
+	color: #000000;
+	font-family:	Verdana;
+	font-size: 80%;
+	font-style: normal;
+	font-weight: normal;
+	margin-top:	0;
+	margin-bottom:	0;
+	margin-left:	0;
+	margin-right:	0;
+	width:	100%;
+}
+
+dl
+{
+	margin-top:	0px;
+	padding-left:	1px;
+}
+
+dt
+{
+		/* PS # 33265 */
+	/*
+	font-style:	italic;
+*/
+}
+
+dd
+{
+/* 
+#33172
+	margin-bottom:	0;
+	margin-left:	0;
+*/
+}
+
+dd p
+{
+	margin-left:-40px;
+	margin-top:0px;
+	padding-right:20px;
+}
+dd .tableSection
+{
+	width:100%;
+}
+
+dd .tableSection table tr td p, dd .alert p
+{
+	margin-left:0px;
+}
+ul
+{
+	margin-left: 17px;
+	list-style-type: disc;
+}
+
+ul ul
+{
+	margin-bottom: 4px;
+	margin-left: 17px;
+	margin-top: 3px;
+	list-style-type: disc;
+}
+
+ol
+{
+	margin-left: 24px;
+	list-style-type: decimal;
+}
+
+ol ol
+{
+	margin-bottom: 4px;
+	margin-left: 24px;
+	margin-top: 3px;
+	list-style-type: lower-alpha;
+}
+
+li
+{
+	margin-bottom: 3px;
+}
+
+p
+{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+div.section p
+{
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+a
+{
+	color:	#0000FF;
+}
+
+a:visited
+{
+	color:	#0000FF;
+}
+
+a:hover
+{
+	color:	#3366FF;
+}
+
+code 
+{
+	font-family:	Monospace, Courier New, Courier;
+	font-size: 105%;
+	color:	#000066;
+}
+
+/***********************************************************
+ *             STRUCTURE PRESENTATION STYLES
+ ***********************************************************/
+
+
+/* Applies to everything below the non-scrolling header region. */
+div#mainSection
+{
+	/* font-size: 70%; */
+	width: 100%;
+	margin-right: 5px;	
+}
+
+/* Applies to everything below the non-scrolling header region, minus the footer. */
+div#mainBody
+{
+	/* font-size: 90%; */
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 10px;
+	padding-bottom: 20px;
+}
+
+/* Applies to everything below the non-scrolling header region. */
+.topic div#mainSection
+{
+	/* font-size: 100%; */
+	width: 100%;
+}
+
+/* Applies to everything below the non-scrolling header region, minus the footer. */
+.topic div#mainBody
+{
+	/* font-size: 100%; */
+	margin-left: 5px;
+	margin-top: 10px;
+	padding-bottom: 20px;
+}
+
+
+
+/*------------------------------ Begin Non-scrolling Header Region Styles -------------------------------*/
+/* Applies to the entire non-scrolling header region. */
+div#header
+{
+	background-color: #D4DFFF;
+	padding-top:	0;
+	padding-bottom:	0;
+	padding-left:	0;
+	padding-right:	0;
+	width:	100%;
+}
+
+/* Applies to both tables in the non-scrolling header region. */
+div#header table
+{
+	border-bottom-color: #C8CDDE;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	width:	100%;
+}
+
+/* Applies to cells in both tables in the non-scrolling header region. */
+div#header table td
+{
+	color: #0000FF;
+	/* font-size: 70%; */
+	margin-top:	0;
+	margin-bottom:	0;
+	padding-right: 20px;
+}
+
+/* Applies to the last row in the upper table of the non-scrolling header region. Text 
+   in this row includes See Also, Constructors, Methods, and Properties. */
+div#header table tr#headerTableRow3 td
+{
+	padding-bottom: 2px;
+	padding-top: 5px;
+}
+
+/* Applies to the lower table in the non-scrolling header region. Text in this table
+   includes Collapse All/Expand All, Language Filter, and Members Options. */
+div#header table#bottomTable
+{
+	border-top-color: #FFFFFF;
+	border-top-style: solid;
+	border-top-width: 1px;
+	text-align: left;
+}
+
+/* Formats the first column--the one that displays icons--in mref list tables (such as Public Constructors, 
+   Protected Constructors, Public Properties, Protected Properties, and so on). */
+div#mainSection table td.imageCell
+{
+	white-space: nowrap;
+}
+/*------------------------------ End General Table Styles -------------------------------*/
+
+/*------------------------------ Begin General Table Styles -------------------------------*/
+
+div#mainBody div.alert, div#mainBody div.code
+{
+	width:98.9%;
+}
+
+div#mainBody div.section div.alert, div#mainBody div.section div.code
+{
+	width:100%;
+}
+
+div#mainBody div.section ul div.alert, div#mainBody div.section ul div.code, 
+div#mainBody div.section ol div.alert, div#mainBody div.section ol div.code
+{
+	width:100%;
+}
+
+/*------------------------------ End General Table Styles -------------------------------*/
+
+
+
+/*------------------------------ Begin Syntax, VB Usage, and Snipper Code Block Styles -------------------------------*/
+div.code table
+{
+	border: 0;
+	/* font-size: 95%; */
+	margin-bottom: 5px;
+	margin-top:-.4em;
+	width: 100%
+}
+
+div.code table th, div.lang 
+{	
+	background:	#EFEFF7;
+	border-bottom-color: #C8CDDE;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	color: #000066;
+	font-weight: bold;
+}
+
+div.code table td, pre.code
+{
+	background:	#F7F7FF;
+	border-top-color: #FFFFFF;
+	border-top-style: solid;
+	border-top-width: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	margin: 0 0 10px 0;
+}
+/* Applies to the running header text in the first row of the upper table in the
+   non-scrolling header region. */
+span#runningHeaderText
+{
+	color: #003399;
+	/* font-size: 90%; */
+}
+
+/* Applies to the topic title in the second row of the upper table in the
+   non-scrolling header region. */
+span#nsrTitle
+{
+	color: #003399;
+	font-size: 120%;
+	font-weight: 600;
+}
+/*------------------------------ End Non-scrolling Header Region Styles -------------------------------*/
+
+
+/* Formats the footer. Currently, the transforms pass in two parameters to the 
+   footer SSC, but the default footer SSC doesn't use either parameter.
+   TODO: Investigate whether the default footer SSC has any impact on doc spec. */
+div#footer
+{
+	/* font-size: 90%; */
+	margin-top:	0;
+	margin-bottom:	0;
+	margin-left:	0;
+	margin-right:	0;
+	padding-top:	2px;
+	padding-bottom:	6px;
+	padding-left:	5px;
+	padding-right:	2px;
+	width:	100%;
+}
+
+/* Unable to find this style in the transforms. The default footer SSC adds a plain horizontal rule.
+   TODO: Determine whether this style is required by the doc spec. */
+/*
+hr#footerHR
+{
+	border-bottom-color: #EEEEFF;
+	border-bottom-style: solid;
+	border-bottom-width: 1;
+	border-top-color: C8CDDE;
+	border-top-style: solid;
+	border-top-width: 1;
+	height: 3;
+	color: #D4DFFF;
+}
+*/
+
+/********************************************************************************************************************
+	Collapsible Section Structure
+
+	<h1 class="heading">							// Format of the collapsible section text
+		<span onclick="ExpandCollapse(xxxToggle)">	// Defines the onclick procedure for the expand/collapse section
+			<img id="xxxToggle">					// Expand/collapse image
+			</img>
+		</span>
+	</h1>
+
+	<div id="xxxSection" class="section">			// The body of the collapsible section; hidden by default
+	</div>
+
+
+	The ExpandCollapse() function is responsible for toggling the expand/collapse image, and for
+	displaying/hiding the body of the collapsible section.
+********************************************************************************************************************/
+
+/* Applies to the body of a collapsible section */
+div.seeAlsoNoToggleSection
+{
+	margin-left:0;
+	padding-top:	2px;
+	padding-bottom:	2px;
+	padding-left:	0;
+	padding-right:	15px;
+	width:	100%;
+}
+
+div.section
+{
+	margin-left:0;
+	padding-top:	2px;
+	padding-bottom:	2px;
+	padding-left:	16px;
+	padding-right:	15px;
+	width:	100%;
+}
+
+/* #33997 */
+div.section dl dd table tr td p
+{
+    margin-left:0px;
+}
+
+
+/*------------------------------ Begin Heading Styles -------------------------------*/
+/* As far as I can tell, only <h1> tags use this class.
+   TODO: Decide whether to roll these attributes into the h1.heading style */
+.heading
+{
+	font-weight:	bold;
+	margin-top:		18px;
+	margin-bottom:	8px;
+}
+
+/* All <h1> headings. */
+h1.heading, h1
+{
+	color: #003399;
+	font-size:	110%;
+}
+
+h2
+{
+	font-weight: bold;
+	font-size: 120%;
+}
+/* Applies to table titles and subsection titles. */
+.subHeading
+{
+	font-weight:	bold;
+	margin-bottom:	4px;
+}
+
+/* Formats the titles of author-generated tables. */
+h3.subHeading, h3
+{
+	color:  #000066;
+	font-size: 120%;
+    font-weight: normal;
+}
+
+/* Formats the titles of all subsections. */
+h4.subHeading, h4
+{
+	color: #000000;
+	font-size: 110%;
+}
+/*------------------------------ End Heading Styles -------------------------------*/
+
+
+/*------------------------------ Begin Image Styles -------------------------------*/
+img.copyCodeImage
+{
+	border: 0;
+	margin: 1px;
+	margin-right: 3px;
+}
+
+img.downloadCodeImage
+{
+	border: 0;
+	margin-right: 3px;
+}
+
+img.viewCodeImage
+{
+	border: 0;
+	margin-right: 3px;
+}
+
+img.note
+{
+	border: 0;
+	margin-right: 3px;
+}
+/*------------------------------ End Image Styles -------------------------------*/
+
+
+/*------------------------------ Begin General Table Styles -------------------------------*/
+table
+{
+	border: 0;
+	font-size: 100%;
+	width:	97%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+table tr
+{
+	vertical-align: top;
+}
+
+table th
+{
+	background-color: #EFEFF7;
+	border-bottom: 1px solid #C8CDDE;
+	color: #000066;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: left;
+}
+
+table td
+{
+	background-color: #F7F7FF;
+	border-bottom: 1px solid #D5D5D3;
+	border-left-color: #D5D5D3;
+	border-left-style: solid;
+	border-left-width: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 1px;
+}
+
+/* Formats the first column--the one that displays icons--in mref list tables (such as Public Constructors, 
+   Protected Constructors, Public Properties, Protected Properties, and so on). */
+div#mainSection table td.imageCell
+{
+	white-space: nowrap;
+}
+/*------------------------------ End General Table Styles -------------------------------*/
+
+
+/*------------------------------ Begin Syntax, VB Usage, and Snipper Code Block Styles -------------------------------*/
+div.code table
+{
+	border: 0;
+	/* font-size: 95%; */
+	margin-bottom: 5px;
+	width: 100%
+}
+
+div.code table th
+{	
+	background:	#EFEFF7;
+	border-bottom-color: #C8CDDE;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	color: #000066;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+div.code table td
+{
+	background:	#F7F7FF;
+	border-top-color: #FFFFFF;
+	border-top-style: solid;
+	border-top-width: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+/*------------------------------ End Syntax, VB Usage, and Snipper Code Block Styles -------------------------------*/
+
+
+/*------------------------------ Begin Note Styles -------------------------------*/
+div.alert table
+{
+	border: 0;
+	/* font-size: 100%; */
+	width:	100%;
+}
+
+div.alert table th
+{
+	background:	#EFEFF7;
+	border-bottom-width: 0;
+	color: #000066;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+blockquote.dtBlock b.le
+{
+	background:	#EFEFF7;
+	border-bottom-width: 0;
+	color: #000066;
+	display: block;
+}
+
+
+div.alert table td, blockquote.dtBlock
+{
+	background:	#F7F7FF;
+	border-top-color: #FFFFFF;
+	border-top-style: solid;
+	border-top-width: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+/*------------------------------ End Note Styles -------------------------------*/
+
+
+/* Applies to the copy code text and image. */
+span.copyCode
+{
+	color: #0000ff;
+	/* font-size: 90%; */
+	font-weight: normal;
+	cursor: hand;
+	float: right;
+	display: inline;
+	text-align: right;
+}
+
+/* The downloadCode class doesn't appear in the transforms.
+   TODO: Find out whether this style is needed for the doc spec. */
+/*
+.downloadCode
+{
+	color: #0000ff;
+	font-size: 90%;
+	font-weight: normal;
+	cursor: hand;
+}
+*/
+
+/* The viewCode class doesn't appear in the transforms.
+   TODO: Find out whether this style is needed for the doc spec. */
+/*
+.viewCode
+{
+	color: #0000ff;
+	font-size: 90%;
+	font-weight: normal;
+	cursor: hand;
+}
+*/
+
+/* Formats the code in syntax and usage blocks, and the code in non-snipper code blocks. */
+div.code pre
+{
+	font-family:	Monospace, Courier New, Courier;
+	/* font-size: 105%; */
+	color:	#000066;
+	word-wrap:	break-word;
+}
+
+/* Formats parameter tooltips. */
+.tip
+{
+	color:	#0000FF;
+	font-style: italic;
+	cursor:hand;
+	text-decoration:underline;
+}
+
+/* Applies to the language labels in the Language Filter drop-down list. */
+.languageFilter
+{
+	color:	#0000FF;
+	cursor:hand;
+	text-decoration:underline;
+	padding-bottom:4px;
+}
+
+/* Applies to text styled as math. This text is passed as a parameter to the italics SSC definition */
+.math
+{
+	font-family: Times New Roman;
+	font-size: 125%
+}
+
+/* The sourceCodeList class doesn't appear in the transforms.
+   TODO: Find out whether this style is needed for the doc spec. */
+/*
+.sourceCodeList
+{
+	font-family: Verdana;
+	font-size: 90%;	
+}
+*/
+
+/* The viewCode class doesn't appear in the transforms.
+   TODO: Find out whether this style is needed for the doc spec. */
+/*
+pre.viewCode
+{
+	width: 100%;
+	overflow: auto;
+}
+*/
+
+/* Lines seperating footer from main body */
+
+div.hr1 {
+	margin: 0;
+	width: 100%;
+	height: 1px;
+	padding: 0;
+	background: #C8CDDE;
+	font-size: 1px;
+}
+
+div.hr2 {
+	margin: 0;
+	width: 100%;
+	height: 1px;
+	padding: 0;
+	background: #D4DFFF;
+	font-size: 1px;
+}
+
+div.hr3 {
+	margin: 0;
+	width: 100%;
+	height: 1px;
+	padding: 0;
+	background: #EEEEFF;
+	font-size: 1px;
+}
+
+pre
+{
+	background: #dddddd;
+	font-family: Lucida Console, Courier New;
+	margin-top: 0px;
+	margin-left: 1em;
+	margin-right:0px;
+	margin-bottom:0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	/*
+	word-wrap: break-word;
+	*/
+}
+
+/* * * End of file. * * */
+
