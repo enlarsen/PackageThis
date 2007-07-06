@@ -36,9 +36,14 @@ namespace PackageThis
             TOCTreeView.PathSeparator = "\x0098";
 
             CreateTempDir();
-            statusStrip1.Items.Add(workingDir);
+
+            rootContentItem.currentLibrary = Properties.Settings.Default.currentLibrary;
+            
+            //statusStrip1.Items.Add(workingDir);
+            statusStrip1.Items.Add(rootContentItem.name);
 
             populateLocaleMenu();
+            populateLibraryMenu();
 
             appController = new AppController(rootContentItem.contentId, currentLocale, rootContentItem.version, 
                 TOCTreeView, workingDir);
@@ -76,6 +81,25 @@ namespace PackageThis
 
         }
 
+        private void populateLibraryMenu()
+        {
+            for(int i = 0; i < rootContentItem.libraries.Count; i++)
+            {
+                ToolStripMenuItem menuItem = new ToolStripMenuItem(rootContentItem.libraries[i], null,
+                    libraryToolStripMenuItem_Click);
+
+                menuItem.Name = rootContentItem.libraries[i];
+                libraryToolStripMenuItem.DropDownItems.Insert(i, menuItem);
+
+                if (rootContentItem.currentLibrary == i)
+                    menuItem.Checked = true;
+                else
+                    menuItem.Checked = false;
+            }
+
+            
+        }
+
         private void populateTreeView()
         {
         }
@@ -103,16 +127,50 @@ namespace PackageThis
 
             selected.Checked = true;
 
+
+            tocLocale = selected.Name;
+            reloadLibrary();
+
+        }
+
+        private void libraryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem selected = sender as ToolStripMenuItem;
+
+            if (selected.Checked == true)
+                return;
+
+            for (int i = 0; i < libraryToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                if ((libraryToolStripMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked == true)
+                {
+                    (libraryToolStripMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                }
+            }
+
+            selected.Checked = true;
+
+            rootContentItem.currentLibrary = Properties.Settings.Default.currentLibrary = 
+                rootContentItem.libraries.IndexOf(selected.Name);
+            Properties.Settings.Default.Save();
+
+            reloadLibrary();
+
+        }
+
+        private void reloadLibrary()
+        {
             CleanUpTempDir();
             CreateTempDir();
 
             statusStrip1.Items.Clear();
-            statusStrip1.Items.Add(workingDir);
+            //statusStrip1.Items.Add(workingDir);
+            statusStrip1.Items.Add(rootContentItem.name);
 
             TOCTreeView.BeginUpdate();
             TOCTreeView.Nodes.Clear();
 
-            appController = new AppController(rootContentItem.contentId, selected.Name, 
+            appController = new AppController(rootContentItem.contentId, tocLocale,
                 rootContentItem.version, TOCTreeView, workingDir);
 
             TOCTreeView.EndUpdate();
@@ -126,9 +184,8 @@ namespace PackageThis
             if (ContentDataSet.Tables["Picture"] != null)
                 ContentDataSet.Tables["Picture"].Clear();
 
-            tocLocale = selected.Name;
-
         }
+
 
         private void TOCTreeView_BeforeCheck(object sender, TreeViewCancelEventArgs e)
         {
@@ -250,6 +307,7 @@ namespace PackageThis
                 ContentDataSet);
 
         }
+
 
 
 

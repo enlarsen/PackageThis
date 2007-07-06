@@ -11,13 +11,45 @@ using ContentServiceLibrary.com.microsoft.msdn.services;
 
 namespace ContentServiceLibrary
 {
-    
-    static public class rootContentItem
-    {
-        static public string contentId = "ms310241";
-        static public string version = "MSDN.10";
-    }
+        
+        
+        static public class rootContentItem
+        {
 
+            static public readonly List<string> libraries = 
+                new List<string> ( new string[]{ "MSDN Library", "TechNet Library" });
+
+            static private string[] contentIds = { "ms310241", "Bb126093" };
+            static private string[] versions = { "MSDN.10", "TechNet.10" };
+
+            static public int currentLibrary = 0;
+
+            static public string contentId
+            {
+                get
+                {
+                    return contentIds[currentLibrary];
+                }
+            }
+
+            static public string version
+            {
+                get
+                {
+                    return versions[currentLibrary];
+                }
+            }
+
+            static public string name
+            {
+                get
+                {
+                    return libraries[currentLibrary];
+                }
+            }
+
+            
+        }
 
 
     public class ContentItem
