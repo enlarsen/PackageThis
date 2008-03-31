@@ -3,12 +3,9 @@
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-        <Connections>
-        </Connections>
-        <Tables>
-        </Tables>
-        <Sources>
-        </Sources>
+        <Connections />
+        <Tables />
+        <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
@@ -18,29 +15,30 @@
         <xs:element name="Item" msprop:Generator_UserTableName="Item" msprop:Generator_RowDeletedName="ItemRowDeleted" msprop:Generator_RowChangedName="ItemRowChanged" msprop:Generator_RowClassName="ItemRow" msprop:Generator_RowChangingName="ItemRowChanging" msprop:Generator_RowEvArgName="ItemRowChangeEvent" msprop:Generator_RowEvHandlerName="ItemRowChangeEventHandler" msprop:Generator_TableClassName="ItemDataTable" msprop:Generator_TableVarName="tableItem" msprop:Generator_RowDeletingName="ItemRowDeleting" msprop:Generator_TablePropName="Item">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ContentId" msprop:Generator_UserColumnName="ContentId" msprop:Generator_ColumnPropNameInRow="ContentId" msprop:Generator_ColumnVarNameInTable="columnContentId" msprop:Generator_ColumnPropNameInTable="ContentIdColumn" type="xs:string" />
-              <xs:element name="Title" msprop:Generator_UserColumnName="Title" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInTable="TitleColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="VersionId" msprop:Generator_UserColumnName="VersionId" msprop:Generator_ColumnPropNameInRow="VersionId" msprop:Generator_ColumnVarNameInTable="columnVersionId" msprop:Generator_ColumnPropNameInTable="VersionIdColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="AssetId" msprop:Generator_UserColumnName="AssetId" msprop:Generator_ColumnPropNameInRow="AssetId" msprop:Generator_ColumnVarNameInTable="columnAssetId" msprop:Generator_ColumnPropNameInTable="AssetIdColumn" type="xs:string" />
-              <xs:element name="Pictures" msprop:Generator_UserColumnName="Pictures" msprop:Generator_ColumnPropNameInRow="Pictures" msprop:Generator_ColumnVarNameInTable="columnPictures" msprop:Generator_ColumnPropNameInTable="PicturesColumn" type="xs:short" minOccurs="0" />
-              <xs:element name="Size" msprop:Generator_UserColumnName="Size" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInTable="SizeColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="Metadata" msprop:Generator_UserColumnName="Metadata" msprop:Generator_ColumnPropNameInRow="Metadata" msprop:Generator_ColumnVarNameInTable="columnMetadata" msprop:Generator_ColumnPropNameInTable="MetadataColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ContentId" msprop:Generator_UserColumnName="ContentId" msprop:Generator_ColumnVarNameInTable="columnContentId" msprop:Generator_ColumnPropNameInRow="ContentId" msprop:Generator_ColumnPropNameInTable="ContentIdColumn" type="xs:string" />
+              <xs:element name="Title" msprop:Generator_UserColumnName="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="VersionId" msprop:Generator_UserColumnName="VersionId" msprop:Generator_ColumnVarNameInTable="columnVersionId" msprop:Generator_ColumnPropNameInRow="VersionId" msprop:Generator_ColumnPropNameInTable="VersionIdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AssetId" msprop:Generator_UserColumnName="AssetId" msprop:Generator_ColumnVarNameInTable="columnAssetId" msprop:Generator_ColumnPropNameInRow="AssetId" msprop:Generator_ColumnPropNameInTable="AssetIdColumn" type="xs:string" />
+              <xs:element name="Pictures" msprop:Generator_UserColumnName="Pictures" msprop:Generator_ColumnVarNameInTable="columnPictures" msprop:Generator_ColumnPropNameInRow="Pictures" msprop:Generator_ColumnPropNameInTable="PicturesColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_UserColumnName="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Metadata" msprop:Generator_UserColumnName="Metadata" msprop:Generator_ColumnVarNameInTable="columnMetadata" msprop:Generator_ColumnPropNameInRow="Metadata" msprop:Generator_ColumnPropNameInTable="MetadataColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Annotations" msprop:Generator_UserColumnName="Annotations" msprop:Generator_ColumnPropNameInRow="Annotations" msprop:Generator_ColumnVarNameInTable="columnAnnotations" msprop:Generator_ColumnPropNameInTable="AnnotationsColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="ItemInstance" msprop:Generator_UserTableName="ItemInstance" msprop:Generator_RowDeletedName="ItemInstanceRowDeleted" msprop:Generator_RowChangedName="ItemInstanceRowChanged" msprop:Generator_RowClassName="ItemInstanceRow" msprop:Generator_RowChangingName="ItemInstanceRowChanging" msprop:Generator_RowEvArgName="ItemInstanceRowChangeEvent" msprop:Generator_RowEvHandlerName="ItemInstanceRowChangeEventHandler" msprop:Generator_TableClassName="ItemInstanceDataTable" msprop:Generator_TableVarName="tableItemInstance" msprop:Generator_RowDeletingName="ItemInstanceRowDeleting" msprop:Generator_TablePropName="ItemInstance">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ContentId" msprop:Generator_UserColumnName="ContentId" msprop:Generator_ColumnPropNameInRow="ContentId" msprop:Generator_ColumnVarNameInTable="columnContentId" msprop:Generator_ColumnPropNameInTable="ContentIdColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="FullPath" msprop:Generator_UserColumnName="FullPath" msprop:Generator_ColumnPropNameInRow="FullPath" msprop:Generator_ColumnVarNameInTable="columnFullPath" msprop:Generator_ColumnPropNameInTable="FullPathColumn" type="xs:string" />
+              <xs:element name="ContentId" msprop:Generator_UserColumnName="ContentId" msprop:Generator_ColumnVarNameInTable="columnContentId" msprop:Generator_ColumnPropNameInRow="ContentId" msprop:Generator_ColumnPropNameInTable="ContentIdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FullPath" msprop:Generator_UserColumnName="FullPath" msprop:Generator_ColumnVarNameInTable="columnFullPath" msprop:Generator_ColumnPropNameInRow="FullPath" msprop:Generator_ColumnPropNameInTable="FullPathColumn" type="xs:string" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Picture" msprop:Generator_UserTableName="Picture" msprop:Generator_RowDeletedName="PictureRowDeleted" msprop:Generator_TableClassName="PictureDataTable" msprop:Generator_RowChangedName="PictureRowChanged" msprop:Generator_RowClassName="PictureRow" msprop:Generator_RowChangingName="PictureRowChanging" msprop:Generator_RowEvArgName="PictureRowChangeEvent" msprop:Generator_RowEvHandlerName="PictureRowChangeEventHandler" msprop:Generator_TablePropName="Picture" msprop:Generator_TableVarName="tablePicture" msprop:Generator_RowDeletingName="PictureRowDeleting">
+        <xs:element name="Picture" msprop:Generator_UserTableName="Picture" msprop:Generator_RowDeletedName="PictureRowDeleted" msprop:Generator_RowChangedName="PictureRowChanged" msprop:Generator_RowClassName="PictureRow" msprop:Generator_RowChangingName="PictureRowChanging" msprop:Generator_RowEvArgName="PictureRowChangeEvent" msprop:Generator_RowEvHandlerName="PictureRowChangeEventHandler" msprop:Generator_TableClassName="PictureDataTable" msprop:Generator_TableVarName="tablePicture" msprop:Generator_RowDeletingName="PictureRowDeleting" msprop:Generator_TablePropName="Picture">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ContentId" msprop:Generator_UserColumnName="ContentId" msprop:Generator_ColumnPropNameInRow="ContentId" msprop:Generator_ColumnVarNameInTable="columnContentId" msprop:Generator_ColumnPropNameInTable="ContentIdColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="Filename" msprop:Generator_UserColumnName="Filename" msprop:Generator_ColumnPropNameInRow="Filename" msprop:Generator_ColumnVarNameInTable="columnFilename" msprop:Generator_ColumnPropNameInTable="FilenameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ContentId" msprop:Generator_UserColumnName="ContentId" msprop:Generator_ColumnVarNameInTable="columnContentId" msprop:Generator_ColumnPropNameInRow="ContentId" msprop:Generator_ColumnPropNameInTable="ContentIdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Filename" msprop:Generator_UserColumnName="Filename" msprop:Generator_ColumnVarNameInTable="columnFilename" msprop:Generator_ColumnPropNameInRow="Filename" msprop:Generator_ColumnPropNameInTable="FilenameColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

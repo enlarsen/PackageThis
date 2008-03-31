@@ -56,6 +56,7 @@ namespace ContentServiceLibrary
     {
         public string xml;
         public string metadata;
+        public string annotations;
         public string toc;
         public string contentId;
         public int numImages;
@@ -121,30 +122,39 @@ namespace ContentServiceLibrary
             request.locale = locale;
             request.version = collection + "." + version;
 
-            requestedDocument[] documents = new requestedDocument[loadFailSafe == true ? 4 : 3];
+            List<requestedDocument> documents = new List<requestedDocument>();
 
 
-            documents[0] = new requestedDocument();
-            documents[0].selector = "Mtps.Links";
-            documents[0].type = documentTypes.common;
+            requestedDocument document = new requestedDocument();
+            document.selector = "Mtps.Links";
+            document.type = documentTypes.common;
+            documents.Add(document);
 
-            documents[1] = new requestedDocument();
-            documents[1].type = documentTypes.primary;
-            documents[1].selector = "Mtps.Toc";
+            document = new requestedDocument();
+            document.type = documentTypes.primary;
+            document.selector = "Mtps.Toc";
+            documents.Add(document);
 
-            documents[2] = new requestedDocument();
-            documents[2].type = documentTypes.common;
-            documents[2].selector = "Mtps.Search";
+            document = new requestedDocument();
+            document.type = documentTypes.common;
+            document.selector = "Mtps.Search";
+            documents.Add(document);
+
+            document = new requestedDocument();
+            document.type = documentTypes.feature;
+            document.selector = "Mtps.Annotations";
+            documents.Add(document);
 
             if (loadFailSafe == true)
             {
-                documents[3] = new requestedDocument();
-                documents[3].type = documentTypes.primary;
-                documents[3].selector = "Mtps.Failsafe";
+                document = new requestedDocument();
+                document.type = documentTypes.primary;
+                document.selector = "Mtps.Failsafe";
+                documents.Add(document);
 
             }
 
-            request.requestedDocuments = documents;
+            request.requestedDocuments = documents.ToArray();
 
             ContentService proxy = new ContentService();
             proxy.appIdValue = new appId();
@@ -195,13 +205,13 @@ namespace ContentServiceLibrary
             {
                 if (primaryDoc.Any != null)
                 {
-                    switch (primaryDoc.primaryFormat)
+                    switch (primaryDoc.primaryFormat.ToLower())
                     {
-                        case "Mtps.Failsafe":
+                        case "mtps.failsafe":
                             xml = primaryDoc.Any.OuterXml;
                             break;
 
-                        case "Mtps.Toc":
+                        case "mtps.toc":
                             toc = primaryDoc.Any.OuterXml;
                             break;
                     }
@@ -209,20 +219,40 @@ namespace ContentServiceLibrary
             }
 
 
+            foreach (feature featureDoc in response.featureDocuments)
+            {
+                if (featureDoc.Any != null)
+                {
+                    if (featureDoc.featureFormat.ToLower() == "mtps.annotations")
+                    {
+                        annotations = featureDoc.Any[0].OuterXml;
+                    }
+                }
+            }
+
+            // If we get no meta/search or wiki data, plug in NOP data because
+            // we can't LoadXml an empty string nor pass null navigators to
+            // the transform.
+            if (string.IsNullOrEmpty(metadata) == true)
+                metadata = "<se:search xmlns:se=\"urn:mtpg-com:mtps/2004/1/search\" />";
+            if (string.IsNullOrEmpty(annotations) == true)
+                annotations = "<an:annotations xmlns:an=\"urn:mtpg-com:mtps/2007/1/annotations\" />";
+
+
             if (loadImages == true)
             {
-                documents = new requestedDocument[response.imageDocuments.Length];
+                requestedDocument[] imageDocs = new requestedDocument[response.imageDocuments.Length];
 
                 // Now that we know their names, we run a request with each image.
                 for (int i = 0; i < response.imageDocuments.Length; i++)
                 {
-                    documents[i] = new requestedDocument();
-                    documents[i].type = documentTypes.image;
-                    documents[i].selector = response.imageDocuments[i].name + "." +
+                    imageDocs[i] = new requestedDocument();
+                    imageDocs[i].type = documentTypes.image;
+                    imageDocs[i].selector = response.imageDocuments[i].name + "." +
                         response.imageDocuments[i].imageFormat;
                 }
 
-                request.requestedDocuments = documents;
+                request.requestedDocuments = imageDocs;
                 response = proxy.GetContent(request);
 
                 foreach (image imageDoc in response.imageDocuments)

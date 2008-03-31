@@ -61,6 +61,11 @@ namespace PackageThis
             "[WINDOWS]\n" +
             "msdn=\"{4}\",\"{1}.hhc\",\"{1}.hhk\",\"{3}\",\"{3}\",,\"MSDN Library\",,\"MSDN Online\",0x73520,240,0x60387e,[30,30,770,540],0x30000,,,,,,0\n\n" +
 
+            "[FILES]\n" +
+            "green-left.jpg\n" +
+            "green-middle.jpg\n" +
+            "green-right.jpg\n\n" +
+
 
             "[INFOTYPES]\n";
 
@@ -120,7 +125,10 @@ namespace PackageThis
                 if (Int32.Parse(row["Size"].ToString()) != 0)
                 {
                     Transform(row["ContentId"].ToString(),
-                        row["Metadata"].ToString(), row["VersionId"].ToString(), contentDataSet);
+                        row["Metadata"].ToString(),
+                        row["Annotations"].ToString(),
+                        row["VersionId"].ToString(), 
+                        contentDataSet);
 
                     XmlDocument document = new XmlDocument();
 
@@ -161,18 +169,7 @@ namespace PackageThis
             }
 
 
-            Stream rs = typeof(AppController).Assembly.GetManifestResourceStream(
-                "PackageThis.Extra.Classic.css");
-
-            FileStream fs = new FileStream(Path.Combine(withinChmDir, "Classic.css"),
-                FileMode.Create, FileAccess.Write);
-
-            StreamWriter sw = new StreamWriter(fs);
-            StreamReader sr = new StreamReader(rs);
-
-            sw.Write(sr.ReadToEnd());
-            sw.Close();
-            sr.Close();
+            WriteExtraFiles();
 
             int numFiles = Directory.GetFiles(chmDir, "*", SearchOption.AllDirectories).Length;
 
@@ -280,11 +277,14 @@ namespace PackageThis
 
         }
 
-        public void Transform(string contentId, string metadataXml, string versionId, Content contentDataSet)
+        public void Transform(string contentId, string metadataXml, string annotationsXml,
+            string versionId, Content contentDataSet)
         {
             XsltArgumentList arguments = new XsltArgumentList();
             Link link = new Link(contentDataSet, links);
             XmlDocument metadata = new XmlDocument();
+            XmlDocument annotations = new XmlDocument();
+
             string filename = Path.Combine(withinChmDir, contentId + ".htm");
             StreamReader sr = new StreamReader(filename);
 
@@ -303,8 +303,10 @@ namespace PackageThis
 
 
             metadata.LoadXml(metadataXml);
+            annotations.LoadXml(annotationsXml);
 
             arguments.AddParam("metadata", "", metadata.CreateNavigator());
+            arguments.AddParam("annotations", "", annotations.CreateNavigator());
             arguments.AddParam("version", "", versionId);
             arguments.AddParam("locale", "", locale);
             arguments.AddParam("charset", "", encoding.WebName);
@@ -340,6 +342,41 @@ namespace PackageThis
         }
 
 
+        // TODO: Factor the following as they are very similar to the .hxs equiv.
+
+        // Includes stoplist and stylesheet
+        void WriteExtraFiles()
+        {
+            WriteExtraFile("Classic.css");
+
+            WriteExtraFile("green-left.jpg");
+            WriteExtraFile("green-middle.jpg");
+            WriteExtraFile("green-right.jpg");
+
+        }
+
+        void WriteExtraFile(string filename)
+        {
+            Stream resourceStream;
+
+            resourceStream = typeof(Program).Assembly.GetManifestResourceStream(
+                "PackageThis.Extra." + filename);
+
+            FileStream fs = new FileStream(Path.Combine(chmDir, filename),
+                FileMode.Create, FileAccess.Write);
+
+
+            int b;
+
+            while ((b = resourceStream.ReadByte()) != -1)
+            {
+                fs.WriteByte((byte)b);
+            }
+
+            resourceStream.Close();
+            fs.Close();
+
+        }
 
     }
 }

@@ -282,14 +282,8 @@ namespace PackageThis
                 row["AssetId"] = mtpsNode.targetAssetId;
                 row["Pictures"] = contentItem.numImages;
                 row["Size"] = contentItem.xml == null ? 0 : contentItem.xml.Length;
-
-                // If we get no meta/search data, plug in NOP search data because
-                // we can't LoadXml an empty string nor pass null navigators to
-                // the transform.
-                if (string.IsNullOrEmpty(contentItem.metadata) == true)
-                    contentItem.metadata = "<se:search xmlns:se=\"urn:mtpg-com:mtps/2004/1/search\" />";
-                
                 row["Metadata"] = contentItem.metadata;
+                row["Annotations"] = contentItem.annotations;
 
                 contentDataSet.Tables["Item"].Rows.Add(row);
             }
@@ -416,7 +410,10 @@ namespace PackageThis
                 if (Int32.Parse(row["Size"].ToString()) != 0)
                 {
                     Transform(row["ContentId"].ToString(),
-                        row["Metadata"].ToString(), row["VersionId"].ToString(), contentDataSet);
+                        row["Metadata"].ToString(),
+                        row["Annotations"].ToString(),
+                        row["VersionId"].ToString(),
+                        contentDataSet);
                 }
             }
 
@@ -517,38 +514,47 @@ namespace PackageThis
         // Includes stoplist and stylesheet
         void WriteExtraFiles()
         {
-            Stream resourceStream = typeof(Program).Assembly.GetManifestResourceStream(
-                "PackageThis.Extra.Classic.css");
-
-            WriteExtraFile(resourceStream, "Classic.css");
+            WriteExtraFile("Classic.css");
 
             // TODO: Locate stop lists for other locales and add them to the project.
-            resourceStream = typeof(Program).Assembly.GetManifestResourceStream(
-                "PackageThis.Extra.msdnFTSstop_Unicode.stp");
+            WriteExtraFile("msdnFTSstop_Unicode.stp");
 
-            WriteExtraFile(resourceStream, "msdnFTSstop_Unicode.stp");
+
+            WriteExtraFile("green-left.jpg");
+            WriteExtraFile("green-middle.jpg");
+            WriteExtraFile("green-right.jpg");
 
         }
-        
-        void WriteExtraFile(Stream resourceStream, string filename)
+
+        void WriteExtraFile(string filename)
         {
-            FileStream fs = new FileStream(Path.Combine(hxsDir, filename), 
+            Stream resourceStream;
+
+            resourceStream = typeof(Program).Assembly.GetManifestResourceStream(
+                "PackageThis.Extra." + filename);
+
+            FileStream fs = new FileStream(Path.Combine(hxsDir, filename),
                 FileMode.Create, FileAccess.Write);
 
-            StreamWriter sw = new StreamWriter(fs);
-            StreamReader sr = new StreamReader(resourceStream);
+            int b;
 
-            sw.Write(sr.ReadToEnd());
-            sw.Close();
-            sr.Close();
+            while ((b = resourceStream.ReadByte()) != -1)
+            {
+                fs.WriteByte((byte)b);
+            }
 
+            resourceStream.Close();
+            fs.Close();
         }
 
-        public void Transform(string contentId, string metadataXml, string versionId, Content contentDataSet)
+        public void Transform(string contentId, string metadataXml, string annotationsXml,
+            string versionId, Content contentDataSet)
         {
             XsltArgumentList arguments = new XsltArgumentList();
             Link link = new Link(contentDataSet, links);
             XmlDocument metadata = new XmlDocument();
+            XmlDocument annotations = new XmlDocument();
+
             string filename = Path.Combine(withinHxsDir, contentId + ".htm");
             StreamReader sr = new StreamReader(filename);
 
@@ -556,8 +562,10 @@ namespace PackageThis
             sr.Close();
 
             metadata.LoadXml(metadataXml);
+            annotations.LoadXml(annotationsXml);
 
             arguments.AddParam("metadata", "", metadata.CreateNavigator());
+            arguments.AddParam("annotations", "", annotations.CreateNavigator());
             arguments.AddParam("version", "", versionId);
             arguments.AddParam("locale", "", locale);
 

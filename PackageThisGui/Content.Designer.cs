@@ -369,6 +369,8 @@ namespace PackageThis {
             
             private global::System.Data.DataColumn columnMetadata;
             
+            private global::System.Data.DataColumn columnAnnotations;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ItemDataTable() {
                 this.TableName = "Item";
@@ -449,6 +451,13 @@ namespace PackageThis {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn AnnotationsColumn {
+                get {
+                    return this.columnAnnotations;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -477,7 +486,7 @@ namespace PackageThis {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ItemRow AddItemRow(string ContentId, string Title, string VersionId, string AssetId, short Pictures, int Size, string Metadata) {
+            public ItemRow AddItemRow(string ContentId, string Title, string VersionId, string AssetId, short Pictures, int Size, string Metadata, string Annotations) {
                 ItemRow rowItemRow = ((ItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ContentId,
@@ -486,7 +495,8 @@ namespace PackageThis {
                         AssetId,
                         Pictures,
                         Size,
-                        Metadata};
+                        Metadata,
+                        Annotations};
                 rowItemRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowItemRow);
                 return rowItemRow;
@@ -524,6 +534,7 @@ namespace PackageThis {
                 this.columnPictures = base.Columns["Pictures"];
                 this.columnSize = base.Columns["Size"];
                 this.columnMetadata = base.Columns["Metadata"];
+                this.columnAnnotations = base.Columns["Annotations"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -542,6 +553,8 @@ namespace PackageThis {
                 base.Columns.Add(this.columnSize);
                 this.columnMetadata = new global::System.Data.DataColumn("Metadata", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMetadata);
+                this.columnAnnotations = new global::System.Data.DataColumn("Annotations", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAnnotations);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("ItemsKey", new global::System.Data.DataColumn[] {
                                 this.columnContentId}, false));
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("AssetIdKey", new global::System.Data.DataColumn[] {
@@ -1282,6 +1295,21 @@ namespace PackageThis {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Annotations {
+                get {
+                    try {
+                        return ((string)(this[this.tableItem.AnnotationsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Annotations\' in table \'Item\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItem.AnnotationsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsTitleNull() {
                 return this.IsNull(this.tableItem.TitleColumn);
             }
@@ -1329,6 +1357,16 @@ namespace PackageThis {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetMetadataNull() {
                 this[this.tableItem.MetadataColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsAnnotationsNull() {
+                return this.IsNull(this.tableItem.AnnotationsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetAnnotationsNull() {
+                this[this.tableItem.AnnotationsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

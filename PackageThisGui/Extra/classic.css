@@ -51,14 +51,6 @@ img#toggleAllImage
 	vertical-align: middle;
 }
 
-/* Supports XLinks */
-MSHelp\:link
-{
- 	text-decoration: underline;
-	color: #0000ff; 
-	hoverColor: #3366ff;
-	filterString: ;
-}
 
 
 /***********************************************************
@@ -631,45 +623,19 @@ div.alert table td, blockquote.dtBlock
 span.copyCode
 {
 	color: #0000ff;
-	/* font-size: 90%; */
 	font-weight: normal;
-	cursor: hand;
+	cursor: link;
 	float: right;
 	display: inline;
 	text-align: right;
 }
 
-/* The downloadCode class doesn't appear in the transforms.
-   TODO: Find out whether this style is needed for the doc spec. */
-/*
-.downloadCode
-{
-	color: #0000ff;
-	font-size: 90%;
-	font-weight: normal;
-	cursor: hand;
-}
-*/
-
-/* The viewCode class doesn't appear in the transforms.
-   TODO: Find out whether this style is needed for the doc spec. */
-/*
-.viewCode
-{
-	color: #0000ff;
-	font-size: 90%;
-	font-weight: normal;
-	cursor: hand;
-}
-*/
 
 /* Formats the code in syntax and usage blocks, and the code in non-snipper code blocks. */
 div.code pre
 {
-	font-family:	Monospace, Courier New, Courier;
-	/* font-size: 105%; */
+	font-family:	Monospace, "Courier New", Courier;
 	color:	#000066;
-	word-wrap:	break-word;
 }
 
 /* Formats parameter tooltips. */
@@ -760,6 +726,107 @@ pre
 	word-wrap: break-word;
 	*/
 }
+
+/* Community Content styles */
+
+.wkViewerHeader_Title
+{
+	color:#000000;
+	font-style:normal;
+	font-weight:bold;
+	font-size:10pt;
+    white-space: inherit; 
+    /*white-space: -moz-pre-wrap !important;*/
+
+}
+
+.wkViewerHeader_Spacer
+{
+  background-color: Transparent;
+}
+
+.wkViewerText
+{
+    display:block;
+    border-top: solid 1px #e3e3e3;
+    padding:3px;
+    overflow:auto;
+    white-space: inherit; 
+    /*white-space: -moz-pre-wrap !important;*/
+}
+
+.cch_title
+{
+	color: Black;
+	font-family: Verdana;
+	font-weight:bold;
+	font-size:12pt;
+	font-weight:bold;
+	padding: 10px 10px 10px 10px;
+	vertical-align:middle;
+	white-space:nowrap;
+}
+
+.wkViewerContainer
+{
+	width:100%;
+	
+	background-color:white;
+	border:solid 1px #87A9D1;
+	display:block;
+	margin: 20px;
+	margin-top:0;
+}
+
+.cch_left
+{
+	height:66px;
+	max-height:66px;
+	background-image:url(/green-left.jpg);
+	background-repeat:repeat-x;
+	background-position:left top;
+	color: #ffffff;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.cch_middle
+{
+	height:66px;
+	width:2px;
+	background-image:url(/green-middle.jpg);
+	background-repeat:repeat-x;
+	background-position:left top;
+	background-color:#ffffff;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.cch_right
+{
+	height:66px;
+	width: 100%;
+	background-image:url(/green-right.jpg);
+	background-repeat:repeat-x;
+	background-position:left top;
+	background-color:#ffffff;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+table.ccHeader td, div.wkViewerContainer table td
+{
+	background-color: #ffffff;
+	border-bottom: none;
+	border-left-color: #ffffff;
+	border-left-style: none;
+	border-left-width: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
+
+}
+
 
 /* * * End of file. * * */
 
