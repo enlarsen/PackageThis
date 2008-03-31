@@ -1,27 +1,32 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageThis", "PackageThis.csproj", "{C028259C-305D-4D75-99B7-6E727261D0E6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{98E0A275-CE44-47BB-8C8D-A654D6F3DF59} = {98E0A275-CE44-47BB-8C8D-A654D6F3DF59}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentServiceLibrary", "..\ContentService\ContentServiceLibrary.csproj", "{98E0A275-CE44-47BB-8C8D-A654D6F3DF59}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs02.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PackageThis.csproj
+		SccLocalPath1 = .
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C028259C-305D-4D75-99B7-6E727261D0E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C028259C-305D-4D75-99B7-6E727261D0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C028259C-305D-4D75-99B7-6E727261D0E6}.Debug|x86.ActiveCfg = Debug|x86
+		{C028259C-305D-4D75-99B7-6E727261D0E6}.Debug|x86.Build.0 = Debug|x86
 		{C028259C-305D-4D75-99B7-6E727261D0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C028259C-305D-4D75-99B7-6E727261D0E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98E0A275-CE44-47BB-8C8D-A654D6F3DF59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98E0A275-CE44-47BB-8C8D-A654D6F3DF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98E0A275-CE44-47BB-8C8D-A654D6F3DF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98E0A275-CE44-47BB-8C8D-A654D6F3DF59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C028259C-305D-4D75-99B7-6E727261D0E6}.Release|x86.ActiveCfg = Release|x86
+		{C028259C-305D-4D75-99B7-6E727261D0E6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

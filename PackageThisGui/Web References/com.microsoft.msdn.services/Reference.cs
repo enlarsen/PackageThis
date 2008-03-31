@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace ContentServiceLibrary.com.microsoft.msdn.services {
+namespace PackageThis.com.microsoft.msdn.services {
     using System.Diagnostics;
     using System.Web.Services;
     using System.ComponentModel;
@@ -44,7 +44,7 @@ namespace ContentServiceLibrary.com.microsoft.msdn.services {
         
         /// <remarks/>
         public ContentService() {
-            this.Url = global::ContentServiceLibrary.Properties.Settings.Default.ContentService_com_microsoft_msdn_services_ContentService;
+            this.Url = global::PackageThis.Properties.Settings.Default.PackageThis_com_microsoft_msdn_services_ContentService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -76,7 +76,7 @@ namespace PackageThis
 
 
         static private Stream resourceStream = typeof(AppController).Assembly.GetManifestResourceStream(
-            "PackageThis.Extra.html.xslt");
+            "PackageThis.Extra.hxs.xslt");
         static private XmlReader transformFile = XmlReader.Create(resourceStream);
         static private  XslCompiledTransform xform = null;
 
