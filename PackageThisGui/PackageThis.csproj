@@ -1,14 +1,60 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C028259C-305D-4D75-99B7-6E727261D0E6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PackageThis</RootNamespace>
     <AssemblyName>PackageThis</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,57 +80,62 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppController.cs" />
-    <Compile Include="Chm.cs" />
-    <Compile Include="CompMsg.cs" />
+    <Compile Include="Export\Chm\Chm.cs" />
+    <Compile Include="Export\Hxs\CompMsg.cs" />
     <Compile Include="Content.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Content.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ExportChmForm.cs">
+    <Compile Include="ContentService\ContentItem.cs" />
+    <Compile Include="ContentService\Image.cs" />
+    <Compile Include="ContentService\Utility.cs" />
+    <Compile Include="GUI\ExportChmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportChmForm.Designer.cs">
+    <Compile Include="GUI\ExportChmForm.Designer.cs">
       <DependentUpon>ExportChmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateHxsForm.cs">
+    <Compile Include="GUI\GenerateHxsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GenerateHxsForm.Designer.cs">
+    <Compile Include="GUI\GenerateHxsForm.Designer.cs">
       <DependentUpon>GenerateHxsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HelpInterop.cs" />
-    <Compile Include="Hhc.cs" />
-    <Compile Include="Hhk.cs" />
-    <Compile Include="Hxc.cs" />
-    <Compile Include="Hxf.cs" />
-    <Compile Include="Hxk.cs" />
-    <Compile Include="Hxs.cs" />
-    <Compile Include="ExportProgressForm.cs">
+    <Compile Include="Export\Hxs\HelpInterop.cs" />
+    <Compile Include="Export\Chm\Hhc.cs" />
+    <Compile Include="Export\Hxs\Hhk.cs" />
+    <Compile Include="Export\Hxs\Hxc.cs" />
+    <Compile Include="Export\Hxs\Hxf.cs" />
+    <Compile Include="Export\Hxs\Hxk.cs" />
+    <Compile Include="Export\Hxs\Hxs.cs" />
+    <Compile Include="GUI\ExportProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportProgressForm.Designer.cs">
+    <Compile Include="GUI\ExportProgressForm.Designer.cs">
       <DependentUpon>ExportProgressForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hxt.cs" />
-    <Compile Include="ICompilable.cs" />
-    <Compile Include="IProgressReporter.cs" />
-    <Compile Include="Link.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Export\Hxs\Hxt.cs" />
+    <Compile Include="Export\ICompilable.cs" />
+    <Compile Include="Export\IProgressReporter.cs" />
+    <Compile Include="Export\Link.cs" />
+    <Compile Include="GUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.designer.cs">
+    <Compile Include="GUI\MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GenerateHxsForm.resx">
+    <EmbeddedResource Include="GUI\GenerateHxsForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>GenerateHxsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +147,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="Content.xsc">
@@ -114,50 +166,107 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Web References\com.microsoft.msdn.services\atoms.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms0.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms1.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms2.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms3.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms4.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms5.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms6.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\atoms7.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\ContentService.wsdl" />
+    <None Include="Web References\com.microsoft.msdn.services\default.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\default0.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\default1.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\default2.xsd" />
+    <None Include="Web References\com.microsoft.msdn.services\getContentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.microsoft.msdn.services\getNavigationPathsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.microsoft.msdn.services\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\com.microsoft.msdn.services\urn_msdn_com_public_content_syndication_2006_09_common.xsd" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="DownloadProgressForm.cs">
+    <Compile Include="GUI\DownloadProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DownloadProgressForm.Designer.cs">
+    <Compile Include="GUI\DownloadProgressForm.Designer.cs">
       <DependentUpon>DownloadProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\com.microsoft.msdn.services\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Extra\html.xslt" />
+    <EmbeddedResource Include="Extra\hxs.xslt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DownloadProgressForm.resx">
+    <EmbeddedResource Include="GUI\DownloadProgressForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>DownloadProgressForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Extra\Classic.css" />
-    <EmbeddedResource Include="ExportProgressForm.resx">
+    <EmbeddedResource Include="GUI\ExportProgressForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ExportProgressForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExportChmForm.resx">
+    <EmbeddedResource Include="GUI\ExportChmForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ExportChmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Extra\chm.xslt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContentService\ContentServiceLibrary.csproj">
-      <Project>{98E0A275-CE44-47BB-8C8D-A654D6F3DF59}</Project>
-      <Name>ContentServiceLibrary</Name>
-    </ProjectReference>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://services.msdn.microsoft.com/ContentServices/ContentService.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.microsoft.msdn.services\</RelPath>
+      <UpdateFromURL>http://services.msdn.microsoft.com/ContentServices/ContentService.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PackageThis_com_microsoft_msdn_services_ContentService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
