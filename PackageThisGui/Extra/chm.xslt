@@ -40,8 +40,9 @@
       </head>
       <body>
         <xsl:apply-templates />
-        <xsl:apply-templates mode="annotations" select="$annotations" />
-
+        <xsl:if test="$annotations//an:annotation">
+          <xsl:apply-templates mode="annotations" select="$annotations" />
+        </xsl:if>
       </body>
     </html>
   </xsl:template>
