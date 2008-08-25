@@ -151,7 +151,11 @@ namespace PackageThis
                 string subTreeLocale = GetAttribute(node.Attributes["toc:SubTreeLocale"]);
                 string isPhantom = GetAttribute(node.Attributes["toc:IsPhantom"]);
 
-                if (isPhantom != "true" && title != "@PhantomNode" && string.IsNullOrEmpty(title) != true)
+                if (isPhantom != "true" && 
+                    title != "@PhantomNode" &&
+                    title != "@NoTitle" &&
+                    string.IsNullOrEmpty(title) != true &&
+                    string.IsNullOrEmpty(target) != true)
                 {
                     TreeNode treeNode = tnCollection.Add(title);
 
